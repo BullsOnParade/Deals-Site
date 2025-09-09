@@ -399,6 +399,127 @@ body {
     font-weight: 600;
 }
 
+/* Top AAA Games Styles */
+.top-aaa-container {
+    width: 75%;
+    margin: 0 auto 40px auto;
+    background: var(--background-light);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 8px 32px rgba(255, 136, 0, 0.2);
+}
+
+.top-aaa-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.top-aaa-table__header-row {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ff9c2b 100%);
+    color: var(--background-light);
+    height: 50px;
+}
+
+.top-aaa-table__header-row th {
+    padding: 12px 8px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-aaa-table__header-row th:nth-child(1) { width: 40%; } /* Game */
+.top-aaa-table__header-row th:nth-child(2) { width: 15%; } /* Platform */
+.top-aaa-table__header-row th:nth-child(3) { width: 15%; } /* Price */
+.top-aaa-table__header-row th:nth-child(4) { width: 10%; } /* Discount */
+.top-aaa-table__header-row th:nth-child(5) { width: 20%; } /* Store */
+
+.top-aaa-table__row {
+    border-bottom: 1px solid var(--text-muted);
+    transition: background-color 0.2s ease;
+}
+
+.top-aaa-table__row:hover {
+    background-color: rgba(255, 136, 0, 0.1);
+}
+
+.top-aaa-table__cell {
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.top-aaa-table__cell--left {
+    text-align: left;
+}
+
+.top-aaa-table__cell--center {
+    text-align: center;
+}
+
+.top-aaa-table__link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.top-aaa-table__link:hover {
+    color: #ff9c2b;
+    text-decoration: underline;
+}
+
+.top-aaa-table__price {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.top-aaa-table__old-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.top-aaa-table__thumbnail {
+    width: 50px;
+    height: 37px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+    /* Improve image quality */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    /* Prevent blur on scaling */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.top-aaa-table__title-container {
+    display: flex;
+    align-items: center;
+}
+
+.top-aaa-table__discount {
+    color: var(--primary-color);
+    font-weight: 700;
+    background: rgba(255, 136, 0, 0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 14px;
+}
+
 /* Deals Table Styles */
 .deals-table--container {
     width: 75%;
@@ -406,6 +527,8 @@ body {
     background: var(--background-light);
     border-radius: 10px;
     overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 8px 32px rgba(255, 136, 0, 0.2);
 }
 
 .deals-table {
@@ -415,7 +538,7 @@ body {
 }
 
 .deals-table__header-row {
-    background: var(--primary-color);;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #ff9c2b 100%);
     color: var(--background-light);
     height: 50px; /* Fixed height for consistency */
 }
@@ -439,10 +562,15 @@ body {
 
 .deals-table__row {
     border-bottom: 1px solid var(--text-muted);
+    transition: background-color 0.2s ease;
+}
+
+.deals-table__row:hover {
+    background-color: rgba(255, 136, 0, 0.1);
 }
 
 .deals-table__cell {
-    padding: 10px;
+    padding: 12px 10px;
     text-align: center;
     vertical-align: middle; /* Center content vertically */
 }
@@ -456,25 +584,32 @@ body {
 }
 
 .deals-table__link {
-    color: var(--primary-color);;
+    color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
+    font-size: 16px;
+}
+
+.deals-table__link:hover {
+    color: #ff9c2b;
+    text-decoration: underline;
 }
 
 .deals-table__price {
-    color: var(--primary-color);;
+    color: var(--primary-color);
     font-weight: 700;
+    font-size: 18px;
 }
 
 .deals-table__old-price {
     text-decoration: line-through;
     color: var(--text-muted);
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .deals-table__thumbnail {
-    width: 40px;
-    height: 30px;
+    width: 50px;
+    height: 37px;
     object-fit: cover;
     border-radius: 4px;
     display: inline-block;
@@ -499,11 +634,11 @@ body {
 .deals-table__discount {
     color: var(--primary-color);
     font-weight: 700;
-    background: rgba(255, 136, 0, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
+    background: rgba(255, 136, 0, 0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 /* Deals Page & Pagination Styles */
@@ -549,6 +684,13 @@ body {
   background: var(--primary-color);
   color: var(--background-light);
   cursor: default;
+}
+
+.pagination-ellipsis {
+  color: var(--text-muted);
+  padding: 8px 4px;
+  font-weight: 700;
+  user-select: none;
 }
 
 .pagination-button:disabled {

@@ -23,6 +23,11 @@ const dealsPerPage = 20;
 let dealsSort = { column: 'title', direction: 'asc' }; // Initial sort state
 let currentSearchTerm = '';
 
+// Popular games pagination
+let popularGamesData = [];
+let popularCurrentPage = 1;
+const popularItemsPerPage = 10;
+
 // --- INITIALIZATION ---
 function initializeApp() {
   console.log('Starting app initialization...');
@@ -70,6 +75,10 @@ function initializeApp() {
         // Populate the top featured cards
         populateFeaturedDeals(deals);
         console.log('Featured deals populated');
+        
+        // Populate the top AAA games table
+        populateTopAAAGames(deals);
+        console.log('Top AAA games populated');
         
         // Set up interactive elements one by one with error handling
         try {
@@ -302,18 +311,22 @@ function handleTableImageError(img) {
   img.parentElement.insertBefore(fallbackIcon, img.parentElement.firstChild);
 }
 
-// Function to create table image with fallback
+// Function to create table image with fallback (for main deals table only)
 function createTableImageWithFallback(imageUrl, altText) {
   const img = new Image();
   img.alt = altText;
   img.className = 'deals-table__thumbnail';
   
-  // Try high-res first, fallback to small if it fails
+  // Try high-res first, fallback to original if it fails
   const highResUrl = imageUrl.replace('capsule_sm_120.jpg', 'capsule_616x353.jpg');
   img.src = highResUrl;
   
   img.onerror = function() {
-    handleTableImageError(this);
+    // Try the original URL
+    img.src = imageUrl;
+    img.onerror = function() {
+      handleTableImageError(this);
+    };
   };
   
   return img;
@@ -357,6 +370,289 @@ function populateFeaturedDeals(deals) {
     cardLink.appendChild(cardBody);
     featuredContainer.appendChild(cardLink);
   });
+}
+
+function populateTopAAAGames(deals) {
+  const topAAATbody = document.getElementById('top-aaa-tbody');
+  if (!topAAATbody) return;
+  
+  // Define most popular games to look for (focused on truly popular games)
+  const popularGames = [
+    // AAA Blockbusters (most popular)
+    'Baldur\'s Gate 3', 'Cyberpunk 2077', 'Elden Ring', 'Hogwarts Legacy',
+    'The Witcher 3', 'Red Dead Redemption 2', 'Grand Theft Auto V',
+    'Call of Duty', 'FIFA', 'Assassin\'s Creed', 'Far Cry', 'Watch Dogs',
+    'Battlefield', 'Destiny 2', 'Overwatch', 'Apex Legends', 'Fortnite',
+    'Counter-Strike', 'Dota 2', 'League of Legends', 'World of Warcraft', 'Final Fantasy',
+    'Resident Evil', 'Devil May Cry', 'Street Fighter', 'Tekken', 'Mortal Kombat',
+    'God of War', 'Spider-Man', 'Horizon', 'Uncharted', 'The Last of Us', 'Ghost of Tsushima',
+    'Diablo', 'Overwatch 2', 'Call of Duty: Modern Warfare', 'Call of Duty: Warzone',
+    'FIFA 24', 'FIFA 23', 'NBA 2K', 'Madden NFL', 'Assassin\'s Creed Valhalla',
+    'Assassin\'s Creed Mirage', 'Far Cry 6', 'Far Cry 5', 'Watch Dogs: Legion',
+    'Battlefield 2042', 'Battlefield V', 'Counter-Strike 2', 'Counter-Strike: Global Offensive',
+    'Final Fantasy XIV', 'Final Fantasy XVI', 'Resident Evil 4', 'Resident Evil Village',
+    'Devil May Cry 5', 'Street Fighter 6', 'Tekken 8', 'Mortal Kombat 1',
+    'Spider-Man: Miles Morales', 'Horizon Zero Dawn', 'Horizon Forbidden West',
+    'Uncharted 4', 'The Last of Us Part I', 'The Last of Us Part II', 'Ghost of Tsushima',
+    'Diablo IV', 'Diablo III',
+    
+    // Popular Indie & Viral Games (most popular)
+    'Among Us', 'Minecraft', 'Palworld', 'Stardew Valley', 'Hades', 'Cuphead',
+    'Celeste', 'Hollow Knight', 'Dead Cells', 'Terraria', 'Valheim', 'Rust',
+    'ARK: Survival Evolved', 'Subnautica', 'Fall Guys', 'Phasmophobia', 'Lethal Company',
+    'It Takes Two', 'A Way Out', 'Overcooked', 'Untitled Goose Game',
+    
+    // Popular Multiplayer Games (most popular)
+    'Rocket League', 'Warframe', 'Genshin Impact', 'PUBG', 'Valorant', 'CS:GO',
+    'Team Fortress 2', 'New World', 'New World: Aeternum',
+    
+    // Popular Strategy & Simulation (most popular)
+    'Cities: Skylines', 'Civilization', 'Total War', 'Age of Empires', 'Sims',
+    
+    // Popular Horror & Survival (most popular)
+    'Dead by Daylight', 'The Forest', '7 Days to Die', 'Don\'t Starve',
+    'Left 4 Dead', 'Back 4 Blood', 'World War Z',
+    
+    // Popular Action & Adventure (most popular)
+    'Monster Hunter', 'Dark Souls', 'Sekiro', 'Bloodborne', 'Demon\'s Souls',
+    
+    // Popular Racing & Sports (most popular)
+    'Forza', 'Gran Turismo', 'F1', 'Need for Speed',
+    
+    // Popular RPGs (most popular)
+    'Starfield', 'Fallout', 'Elder Scrolls', 'Mass Effect', 'Dragon Age'
+  ];
+  
+  // Find deals for popular games with more precise matching (avoid DLCs/packs)
+  const popularDeals = deals.filter(deal => {
+    const title = deal.title.toLowerCase();
+    
+    // Skip DLCs, packs, expansions, and booster packs
+    if (title.includes('dlc') || title.includes('pack') || title.includes('expansion') || 
+        title.includes('season pass') || title.includes('bundle') || title.includes('collection') ||
+        title.includes('edition') || title.includes('ultimate') || title.includes('gold') ||
+        title.includes('premium') || title.includes('deluxe') || title.includes('complete') ||
+        title.includes('booster') || title.includes('card') || title.includes('trading') ||
+        title.includes('starter') || title.includes('upgrade') || title.includes('add-on') ||
+        title.includes('skin') || title.includes('cosmetic') || title.includes('weapon') ||
+        title.includes('character') || title.includes('hero') || title.includes('champion')) {
+      return false;
+    }
+    
+    return popularGames.some(popularGame => {
+      const gameName = popularGame.toLowerCase();
+      // More precise matching - exact match or starts with the game name followed by space/colon/dash
+      return title === gameName || 
+             title.startsWith(gameName + ' ') || 
+             title.startsWith(gameName + ':') || 
+             title.startsWith(gameName + ' -');
+    });
+  });
+  
+  // Debug: Log found popular games
+  console.log('Found popular games:', popularDeals.map(deal => deal.title));
+  
+  // Sort by discount percentage (highest first) - we'll paginate this
+  const sortedPopularDeals = popularDeals.sort((a, b) => {
+    const discountA = Math.round(((a.oldPrice - a.price) / a.oldPrice) * 100);
+    const discountB = Math.round(((b.oldPrice - b.price) / b.oldPrice) * 100);
+    return discountB - discountA;
+  });
+  
+  // Store the data globally for pagination
+  popularGamesData = sortedPopularDeals;
+  
+  // Display the current page
+  displayPopularGamesPage(popularCurrentPage);
+}
+
+function displayPopularGamesPage(page) {
+  const topAAATbody = document.getElementById('top-aaa-tbody');
+  if (!topAAATbody) return;
+  
+  topAAATbody.innerHTML = ''; // Clear existing rows
+  
+  if (popularGamesData.length === 0) {
+    // Fallback: Show top deals by discount if no popular games found
+    console.log('No popular games found, showing top deals by discount');
+    const topDeals = allDealsData
+      .sort((a, b) => {
+        const discountA = Math.round(((a.oldPrice - a.price) / a.oldPrice) * 100);
+        const discountB = Math.round(((b.oldPrice - b.price) / b.oldPrice) * 100);
+        return discountB - discountA;
+      })
+      .slice(0, 10);
+    
+    // Use the top deals instead
+    topDeals.forEach(deal => {
+      const discount = Math.round(((deal.oldPrice - deal.price) / deal.oldPrice) * 100);
+      
+      // Create table row
+      const row = document.createElement('tr');
+      row.className = 'top-aaa-table__row';
+      
+      // Create title cell with link only (no image)
+      const titleCell = document.createElement('td');
+      titleCell.className = 'top-aaa-table__cell top-aaa-table__cell--left';
+      
+      // Create link
+      const link = document.createElement('a');
+      link.href = deal.url;
+      link.className = 'top-aaa-table__link';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = deal.title;
+      
+      titleCell.appendChild(link);
+      
+      // Create other cells
+      const platformCell = document.createElement('td');
+      platformCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+      platformCell.textContent = deal.platform || 'PC';
+      
+      const priceCell = document.createElement('td');
+      priceCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+      priceCell.innerHTML = `
+        <div class="top-aaa-table__price">$${deal.price}</div>
+        <div class="top-aaa-table__old-price">$${deal.oldPrice}</div>
+      `;
+      
+      const discountCell = document.createElement('td');
+      discountCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+      discountCell.innerHTML = `<span class="top-aaa-table__discount">-${discount}%</span>`;
+      
+      const storeCell = document.createElement('td');
+      storeCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+      storeCell.textContent = deal.store || 'Unknown';
+      
+      // Assemble row
+      row.appendChild(titleCell);
+      row.appendChild(platformCell);
+      row.appendChild(priceCell);
+      row.appendChild(discountCell);
+      row.appendChild(storeCell);
+      
+      topAAATbody.appendChild(row);
+    });
+    return;
+  }
+  
+  // Calculate pagination
+  const startIndex = (page - 1) * popularItemsPerPage;
+  const endIndex = startIndex + popularItemsPerPage;
+  const pageDeals = popularGamesData.slice(startIndex, endIndex);
+  
+  // Display deals for this page
+  pageDeals.forEach(deal => {
+    const discount = Math.round(((deal.oldPrice - deal.price) / deal.oldPrice) * 100);
+    
+    // Create table row
+    const row = document.createElement('tr');
+    row.className = 'top-aaa-table__row';
+    
+      // Create title cell with link only (no image)
+      const titleCell = document.createElement('td');
+      titleCell.className = 'top-aaa-table__cell top-aaa-table__cell--left';
+      
+      // Create link
+      const link = document.createElement('a');
+      link.href = deal.url;
+      link.className = 'top-aaa-table__link';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = deal.title;
+      
+      titleCell.appendChild(link);
+    
+    // Create other cells
+    const platformCell = document.createElement('td');
+    platformCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+    platformCell.textContent = deal.platform;
+    
+    const priceCell = document.createElement('td');
+    priceCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+    priceCell.innerHTML = `
+      <span class="top-aaa-table__price">$${deal.price.toFixed(2)}</span>
+      <div class="top-aaa-table__old-price">$${deal.oldPrice.toFixed(2)}</div>
+    `;
+    
+    const discountCell = document.createElement('td');
+    discountCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+    discountCell.innerHTML = `<span class="top-aaa-table__discount">${discount}% OFF</span>`;
+    
+    const storeCell = document.createElement('td');
+    storeCell.className = 'top-aaa-table__cell top-aaa-table__cell--center';
+    storeCell.textContent = deal.store;
+    
+    // Assemble row
+    row.appendChild(titleCell);
+    row.appendChild(platformCell);
+    row.appendChild(priceCell);
+    row.appendChild(discountCell);
+    row.appendChild(storeCell);
+    
+    topAAATbody.appendChild(row);
+  });
+  
+  // Add pagination controls
+  setupPopularGamesPagination();
+}
+
+function setupPopularGamesPagination() {
+  const totalPages = Math.ceil(popularGamesData.length / popularItemsPerPage);
+  
+  // Remove existing pagination
+  const existingPagination = document.querySelector('.popular-games-pagination');
+  if (existingPagination) {
+    existingPagination.remove();
+  }
+  
+  if (totalPages <= 1) return; // No pagination needed
+  
+  // Create pagination container
+  const paginationContainer = document.createElement('div');
+  paginationContainer.className = 'popular-games-pagination';
+  paginationContainer.style.cssText = 'text-align: center; margin-top: 20px; padding: 20px;';
+  
+  // Previous button
+  const prevButton = document.createElement('button');
+  prevButton.textContent = '←';
+  prevButton.disabled = popularCurrentPage === 1;
+  prevButton.style.cssText = 'margin: 0 5px; padding: 8px 12px; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer;';
+  prevButton.onclick = () => {
+    if (popularCurrentPage > 1) {
+      popularCurrentPage--;
+      displayPopularGamesPage(popularCurrentPage);
+    }
+  };
+  
+  // Page numbers
+  const pageNumbers = document.createElement('span');
+  pageNumbers.textContent = `Page ${popularCurrentPage} of ${totalPages}`;
+  pageNumbers.style.cssText = 'margin: 0 15px; color: var(--text-color);';
+  
+  // Next button
+  const nextButton = document.createElement('button');
+  nextButton.textContent = '→';
+  nextButton.disabled = popularCurrentPage === totalPages;
+  nextButton.style.cssText = 'margin: 0 5px; padding: 8px 12px; background: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer;';
+  nextButton.onclick = () => {
+    if (popularCurrentPage < totalPages) {
+      popularCurrentPage++;
+      displayPopularGamesPage(popularCurrentPage);
+    }
+  };
+  
+  // Assemble pagination
+  paginationContainer.appendChild(prevButton);
+  paginationContainer.appendChild(pageNumbers);
+  paginationContainer.appendChild(nextButton);
+  
+  // Insert after the table
+  const tableContainer = document.querySelector('.top-aaa-container');
+  if (tableContainer) {
+    tableContainer.appendChild(paginationContainer);
+  }
 }
 
 function populateDealsTable(deals, tableBody) {
@@ -761,7 +1057,7 @@ function displayPage(page) {
   const endIndex = startIndex + dealsPerPage;
   const paginatedDeals = filteredDealsData.slice(startIndex, endIndex);
   populateDealsTable(paginatedDeals, tableBody);
-  updatePaginationUI();
+  setupPagination(); // Recreate pagination with new current page
 }
 
 function setupPagination() {
@@ -770,8 +1066,9 @@ function setupPagination() {
   container.innerHTML = '';
   const pageCount = Math.ceil(filteredDealsData.length / dealsPerPage);
 
+  // Previous button
   const prevButton = document.createElement('button');
-  prevButton.textContent = 'Previous';
+  prevButton.innerHTML = '&larr;';
   prevButton.classList.add('pagination-button');
   prevButton.addEventListener('click', () => { 
     if (currentPage > 1) {
@@ -781,22 +1078,68 @@ function setupPagination() {
   });
   container.appendChild(prevButton);
 
-  for (let i = 1; i <= pageCount; i++) {
+  // Smart pagination logic
+  const createPageLink = (pageNum) => {
     const pageLink = document.createElement('a');
     pageLink.href = '#';
-    pageLink.textContent = i;
+    pageLink.textContent = pageNum;
     pageLink.classList.add('pagination-link');
-    if (i === currentPage) pageLink.classList.add('pagination-link--active');
+    if (pageNum === currentPage) pageLink.classList.add('pagination-link--active');
     pageLink.addEventListener('click', (e) => { 
       e.preventDefault(); 
       showTableLoading();
-      setTimeout(() => displayPage(i), 100);
+      setTimeout(() => displayPage(pageNum), 100);
     });
-    container.appendChild(pageLink);
+    return pageLink;
+  };
+
+  const createEllipsis = () => {
+    const ellipsis = document.createElement('span');
+    ellipsis.textContent = '...';
+    ellipsis.classList.add('pagination-ellipsis');
+    return ellipsis;
+  };
+
+  // Always show first page
+  container.appendChild(createPageLink(1));
+
+  if (pageCount <= 7) {
+    // Show all pages if 7 or fewer
+    for (let i = 2; i <= pageCount - 1; i++) {
+      container.appendChild(createPageLink(i));
+    }
+  } else {
+    // Smart pagination for more than 7 pages
+    if (currentPage <= 3) {
+      // Show: 1 2 3 4 5 ... last
+      for (let i = 2; i <= 5; i++) {
+        container.appendChild(createPageLink(i));
+      }
+      container.appendChild(createEllipsis());
+    } else if (currentPage >= pageCount - 2) {
+      // Show: 1 ... (last-4) (last-3) (last-2) (last-1) last
+      container.appendChild(createEllipsis());
+      for (let i = pageCount - 4; i <= pageCount - 1; i++) {
+        container.appendChild(createPageLink(i));
+      }
+    } else {
+      // Show: 1 ... (current-2) (current-1) current (current+1) (current+2) ... last
+      container.appendChild(createEllipsis());
+      for (let i = currentPage - 2; i <= currentPage + 2; i++) {
+        container.appendChild(createPageLink(i));
+      }
+      container.appendChild(createEllipsis());
+    }
   }
 
+  // Always show last page (if more than 1 page)
+  if (pageCount > 1) {
+    container.appendChild(createPageLink(pageCount));
+  }
+
+  // Next button
   const nextButton = document.createElement('button');
-  nextButton.textContent = 'Next';
+  nextButton.innerHTML = '&rarr;';
   nextButton.classList.add('pagination-button');
   nextButton.addEventListener('click', () => { 
     if (currentPage < pageCount) {
@@ -805,8 +1148,6 @@ function setupPagination() {
     }
   });
   container.appendChild(nextButton);
-
-  updatePaginationUI();
 }
 
 function updatePaginationUI() {
