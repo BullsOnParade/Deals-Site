@@ -249,6 +249,13 @@ function showErrorState(error) {
 
 // --- IMAGE ERROR HANDLING ---
 function handleImageError(img) {
+  // Try fallback to smaller image if high-res failed
+  if (img.src.includes('capsule_616x353.jpg')) {
+    img.src = img.src.replace('capsule_616x353.jpg', 'capsule_sm_120.jpg');
+    return; // Let the image try to load the fallback
+  }
+  
+  // If both failed, show broken state
   img.classList.add('broken');
   img.src = ''; // Clear the broken src
   img.alt = 'Game image unavailable';
@@ -258,13 +265,58 @@ function handleImageLoad(img) {
   img.classList.add('loaded');
 }
 
+// Function to create image with fallback
+function createImageWithFallback(imageUrl, altText) {
+  const img = new Image();
+  img.alt = altText;
+  img.className = 'deal-card__image';
+  
+  // Try high-res first, fallback to small if it fails
+  const highResUrl = imageUrl.replace('capsule_sm_120.jpg', 'capsule_616x353.jpg');
+  img.src = highResUrl;
+  
+  img.onerror = function() {
+    handleImageError(this);
+  };
+  
+  img.onload = function() {
+    handleImageLoad(this);
+  };
+  
+  return img;
+}
+
 function handleTableImageError(img) {
+  // Try fallback to smaller image if high-res failed
+  if (img.src.includes('capsule_616x353.jpg')) {
+    img.src = img.src.replace('capsule_616x353.jpg', 'capsule_sm_120.jpg');
+    return; // Let the image try to load the fallback
+  }
+  
+  // If both failed, show fallback icon
   img.style.display = 'none';
   // Add fallback icon without removing the title
   const fallbackIcon = document.createElement('span');
   fallbackIcon.style.cssText = 'color: var(--text-muted); font-size: 12px; margin-right: 12px; display: inline-block; vertical-align: middle;';
   fallbackIcon.textContent = '🎮';
   img.parentElement.insertBefore(fallbackIcon, img.parentElement.firstChild);
+}
+
+// Function to create table image with fallback
+function createTableImageWithFallback(imageUrl, altText) {
+  const img = new Image();
+  img.alt = altText;
+  img.className = 'deals-table__thumbnail';
+  
+  // Try high-res first, fallback to small if it fails
+  const highResUrl = imageUrl.replace('capsule_sm_120.jpg', 'capsule_616x353.jpg');
+  img.src = highResUrl;
+  
+  img.onerror = function() {
+    handleTableImageError(this);
+  };
+  
+  return img;
 }
 
 // --- UI POPULATION ---
@@ -277,20 +329,33 @@ function populateFeaturedDeals(deals) {
 
   featuredDeals.forEach(deal => {
     const discount = Math.round(((deal.oldPrice - deal.price) / deal.oldPrice) * 100);
-    const dealCardHTML = `
-      <a href="${deal.url}" class="deal-card" target="_blank" rel="noopener noreferrer">
-        <img src="${deal.imageUrl}" alt="${deal.title}" class="deal-card__image" onerror="handleImageError(this)" onload="handleImageLoad(this)">
-        <div class="deal-card__body">
-          <h3 class="deal-card__title">${deal.title}</h3>
-          <div class="deal-card__price">$${deal.price.toFixed(2)}</div>
-          <div class="deal-card__old-price">$${deal.oldPrice.toFixed(2)}</div>
-          <div class="deal-card__meta">
-            <span class="deal-card__discount">${discount}% OFF</span> • ${deal.platform} • ${deal.store}
-          </div>
-        </div>
-      </a>
+    
+    // Create the card element
+    const cardLink = document.createElement('a');
+    cardLink.href = deal.url;
+    cardLink.className = 'deal-card';
+    cardLink.target = '_blank';
+    cardLink.rel = 'noopener noreferrer';
+    
+    // Create image with fallback
+    const img = createImageWithFallback(deal.imageUrl, deal.title);
+    
+    // Create card body
+    const cardBody = document.createElement('div');
+    cardBody.className = 'deal-card__body';
+    cardBody.innerHTML = `
+      <h3 class="deal-card__title">${deal.title}</h3>
+      <div class="deal-card__price">$${deal.price.toFixed(2)}</div>
+      <div class="deal-card__old-price">$${deal.oldPrice.toFixed(2)}</div>
+      <div class="deal-card__meta">
+        <span class="deal-card__discount">${discount}% OFF</span> • ${deal.platform} • ${deal.store}
+      </div>
     `;
-    featuredContainer.innerHTML += dealCardHTML;
+    
+    // Assemble the card
+    cardLink.appendChild(img);
+    cardLink.appendChild(cardBody);
+    featuredContainer.appendChild(cardLink);
   });
 }
 
@@ -300,26 +365,62 @@ function populateDealsTable(deals, tableBody) {
 
   deals.forEach(deal => {
     const discount = Math.round(((deal.oldPrice - deal.price) / deal.oldPrice) * 100);
-    const rowHTML = `
-      <tr class="deals-table__row">
-        <td class="deals-table__cell deals-table__cell--left">
-          <div class="deals-table__title-container">
-            <img src="${deal.imageUrl}" alt="${deal.title}" class="deals-table__thumbnail" onerror="handleTableImageError(this)">
-            <a href="${deal.url}" class="deals-table__link" target="_blank" rel="noopener noreferrer">${deal.title}</a>
-          </div>
-        </td>
-        <td class="deals-table__cell deals-table__cell--center">${deal.platform}</td>
-        <td class="deals-table__cell deals-table__cell--center">
-          <span class="deals-table__price">$${deal.price.toFixed(2)}</span>
-          <div class="deals-table__old-price">$${deal.oldPrice.toFixed(2)}</div>
-        </td>
-        <td class="deals-table__cell deals-table__cell--center">
-          <span class="deals-table__discount">${discount}% OFF</span>
-        </td>
-        <td class="deals-table__cell deals-table__cell--center">${deal.store}</td>
-      </tr>
+    
+    // Create table row
+    const row = document.createElement('tr');
+    row.className = 'deals-table__row';
+    
+    // Create title cell with image and link
+    const titleCell = document.createElement('td');
+    titleCell.className = 'deals-table__cell deals-table__cell--left';
+    
+    const titleContainer = document.createElement('div');
+    titleContainer.className = 'deals-table__title-container';
+    
+    // Create image with fallback
+    const img = createTableImageWithFallback(deal.imageUrl, deal.title);
+    
+    // Create link
+    const link = document.createElement('a');
+    link.href = deal.url;
+    link.className = 'deals-table__link';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = deal.title;
+    
+    // Assemble title container
+    titleContainer.appendChild(img);
+    titleContainer.appendChild(link);
+    titleCell.appendChild(titleContainer);
+    
+    // Create other cells
+    const platformCell = document.createElement('td');
+    platformCell.className = 'deals-table__cell deals-table__cell--center';
+    platformCell.textContent = deal.platform;
+    
+    const priceCell = document.createElement('td');
+    priceCell.className = 'deals-table__cell deals-table__cell--center';
+    priceCell.innerHTML = `
+      <span class="deals-table__price">$${deal.price.toFixed(2)}</span>
+      <div class="deals-table__old-price">$${deal.oldPrice.toFixed(2)}</div>
     `;
-    tableBody.innerHTML += rowHTML;
+    
+    const discountCell = document.createElement('td');
+    discountCell.className = 'deals-table__cell deals-table__cell--center';
+    discountCell.innerHTML = `<span class="deals-table__discount">${discount}% OFF</span>`;
+    
+    const storeCell = document.createElement('td');
+    storeCell.className = 'deals-table__cell deals-table__cell--center';
+    storeCell.textContent = deal.store;
+    
+    // Assemble row
+    row.appendChild(titleCell);
+    row.appendChild(platformCell);
+    row.appendChild(priceCell);
+    row.appendChild(discountCell);
+    row.appendChild(storeCell);
+    
+    tableBody.appendChild(row);
   });
 }
 

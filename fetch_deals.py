@@ -1,4 +1,4 @@
-import requests
+import requests  # pyright: ignore[reportMissingModuleSource]
 import json
 import time
 from typing import List, Dict, Any

@@ -193,7 +193,7 @@ body {
 .deal-card__image {
     width: 100%;
     height: 180px;
-    object-fit: contain; /* Changed to contain to show full image without cropping */
+    object-fit: cover; /* Changed to cover for better image quality */
     object-position: center;
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
     display: block;
@@ -201,7 +201,8 @@ body {
     /* Image quality improvements */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-    /* Better scaling for low-res images */
+    image-rendering: high-quality;
+    /* Better scaling for high-res images */
     image-rendering: auto;
     /* Force hardware acceleration */
     transform: translateZ(0);
@@ -211,6 +212,10 @@ body {
     animation: fadeInImage 0.3s ease-in-out forwards;
     /* Better image fitting */
     border-radius: 8px 8px 0 0;
+    /* Prevent image blur on scaling */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    will-change: transform;
 }
 
 @keyframes fadeInImage {
@@ -475,6 +480,15 @@ body {
     display: inline-block;
     margin-right: 12px;
     vertical-align: middle;
+    /* Improve image quality */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    /* Prevent blur on scaling */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .deals-table__title-container {
