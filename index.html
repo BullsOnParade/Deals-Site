@@ -3,33 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deals Site</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Primary Meta Tags
+  <title>GamingDealsInsider - Best Gaming Deals & Discounts Daily</title>
+  <meta name="title" content="GamingDealsInsider - Best Gaming Deals & Discounts Daily">
+  <meta name="description" content="Find the best gaming deals on PC, PlayStation, Xbox, and Nintendo games. Daily updated discounts from top retailers. Save money on your favorite games with our curated deals.">
+  <meta name="keywords" content="gaming deals, game discounts, PC games, console games, cheap games, gaming sales, PlayStation deals, Xbox deals, Nintendo deals, Steam sales, gaming bargains">
+  <meta name="author" content="GamingDealsInsider">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="1 days">
+  
+  Open Graph / Facebook
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gamingdealsinsider.com/">
+  <meta property="og:title" content="GamingDealsInsider - Best Gaming Deals & Discounts Daily">
+  <meta property="og:description" content="Find the best gaming deals on PC, PlayStation, Xbox, and Nintendo games. Daily updated discounts from top retailers.">
+  <meta property="og:image" content="https://gamingdealsinsider.com/images/gaming-deals-og.jpg">
+  <meta property="og:site_name" content="GamingDealsInsider">
+  <meta property="og:locale" content="en_US">
+  
+  Twitter
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://gamingdealsinsider.com/">
+  <meta property="twitter:title" content="GamingDealsInsider - Best Gaming Deals & Discounts Daily">
+  <meta property="twitter:description" content="Find the best gaming deals on PC, PlayStation, Xbox, and Nintendo games. Daily updated discounts from top retailers.">
+  <meta property="twitter:image" content="https://gamingdealsinsider.com/images/gaming-deals-twitter.jpg">
+  
+  Additional SEO Meta Tags
+  <meta name="theme-color" content="#ff8800">
+  <meta name="msapplication-TileColor" content="#ff8800">
+  <meta name="application-name" content="GamingDealsInsider">
+  
+  Canonical URL
+  <link rel="canonical" href="https://gamingdealsinsider.com/">
+  
+  Favicon
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest"> -->
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Google Analytics
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  Structured Data 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GamingDealsInsider",
+    "url": "https://gamingdealsinsider.com",
+    "description": "Find the best gaming deals on PC, PlayStation, Xbox, and Nintendo games. Daily updated discounts from top retailers.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://gamingdealsinsider.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GamingDealsInsider",
+      "url": "https://gamingdealsinsider.com"
+    }
+  }
+  </script> -->
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-  <header>
-    <h1>Welcome to the Deals Site</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="header__title">GamingDealsInsider</h1>
+      <p class="header__tagline">Best Gaming Deals & Discounts Daily</p>
+    </div>
+    <nav class="header__menu">
+      <a class="header__menu-link" href="index.html">Home</a>
+      <a class="header__menu-link" href="about.html">About</a>
     </nav>
   </header>
+
+  <!-- Featured Deals Section -->
   <main>
-    <section>
-      <h2>Featured Deals</h2>
-      <ul>
-        <li><a href="#">Deal 1</a></li>
-        <li><a href="#">Deal 2</a></li>
-        <li><a href="#">Deal 3</a></li>
-      </ul>
+    <section aria-label="Featured Gaming Deals">
+      <h1 class="index-titles">Top Deals</h1>
+      <div class="featured-deals-container">
+        <button id="scroll-left-btn" class="scroll-arrow-btn left" aria-label="Scroll left to see more deals">&lt;</button>
+        <section class="featured-deals" role="region" aria-label="Featured gaming deals carousel">
+          <!-- Initial loading state -->
+          <div class="loading-container">
+            <div class="loading-spinner"></div>
+          </div>
+        </section>
+        <button id="scroll-right-btn" class="scroll-arrow-btn right" aria-label="Scroll right to see more deals">&gt;</button>
+      </div>
+    </section>
+
+    <section aria-label="All Gaming Deals">
+      <div class="section-header">
+        <h1 class="index-titles">All Gaming Deals</h1>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input type="text" id="search-input" class="search-input" placeholder="Search games..." aria-label="Search games">
+          <button id="clear-search-btn" class="clear-search-btn" aria-label="Clear search" style="display: none;">✕</button>
+        </div>
+      </div>
+  
+      <!-- Deals Table -->
+      <div class="deals-table--container">
+        <table class="deals-table" role="table" aria-label="Gaming deals comparison table">
+          <thead>
+            <tr class="deals-table__header-row">
+              <th class="deals-table__cell deals-table__cell--left" scope="col">Game Title</th>
+              <th class="deals-table__cell deals-table__cell--center" scope="col">Platform</th>
+              <th class="deals-table__cell deals-table__cell--center" scope="col">Current Price</th>
+              <th class="deals-table__cell deals-table__cell--center" scope="col">Discount</th>
+              <th class="deals-table__cell deals-table__cell--center" scope="col">Store</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Initial loading state -->
+            <tr>
+              <td colspan="5" class="loading-container">
+                <div class="loading-spinner"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <nav id="pagination-container" class="pagination-container" aria-label="Deals pagination">
+        <!-- Pagination controls will be injected here -->
+      </nav>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2023 Deals Site</p>
-    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 GamingDealsInsider. All rights reserved.</p>
+    <p><a href="https://buymeacoffee.com/gamingdealsinsider" target="_blank">Buy me a coffee here 🧡</a></p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
