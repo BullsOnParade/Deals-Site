@@ -452,11 +452,9 @@ function populateTopAAAGames(deals) {
   // Debug: Log found popular games
   console.log('Found popular games:', popularDeals.map(deal => deal.title));
   
-  // Sort by discount percentage (highest first) - we'll paginate this
+  // Sort alphabetically (A-Z) - we'll paginate this
   const sortedPopularDeals = popularDeals.sort((a, b) => {
-    const discountA = Math.round(((a.oldPrice - a.price) / a.oldPrice) * 100);
-    const discountB = Math.round(((b.oldPrice - b.price) / b.oldPrice) * 100);
-    return discountB - discountA;
+    return a.title.localeCompare(b.title);
   });
   
   // Store the data globally for pagination
