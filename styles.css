@@ -975,14 +975,152 @@ body {
 
 /* Footer Styles */
 .footer {
-    text-align: center;
-    color: var(--text-muted);
-    padding: 32px;
+  background: var(--background-dark);
+  color: var(--text-light);
+  padding: 40px 0 20px;
+  margin-top: 60px;
 }
 
-.footer a {
-  text-decoration: none;
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer__section {
+  text-align: left;
+}
+
+.footer__title {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer__subtitle {
+  color: var(--text-light);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.footer__description {
   color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 8px;
+}
+
+.footer__link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__link:hover {
+  color: var(--primary-color);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--text-muted);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.footer__copyright {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Privacy Policy Page Styles */
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.privacy-section {
+  margin-bottom: 40px;
+}
+
+.privacy-section h2 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.privacy-section h3 {
+  color: var(--text-light);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 25px 0 15px;
+}
+
+.privacy-section p {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.privacy-section ul {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  padding-left: 25px;
+}
+
+.privacy-section li {
+  margin-bottom: 8px;
+}
+
+.privacy-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.privacy-section a:hover {
+  text-decoration: underline;
+}
+
+.last-updated {
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Header Navigation Active State */
+.header__menu-link.active {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* Medium Screen Responsive Styles */
