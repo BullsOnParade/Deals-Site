@@ -757,6 +757,18 @@
   },
   {
     "id": 64,
+    "title": "Destiny 2: The Final Shape",
+    "platform": "PC",
+    "price": 10.2,
+    "oldPrice": 29.99,
+    "store": "GreenManGaming",
+    "url": "https://www.cheapshark.com/redirect?dealID=f72xXs5d3UE%2FZ2oFOC5SpWB381mfv4PluIjFe3kt8yc%3D",
+    "imageUrl": "https://sttc.gamersgate.com/images/product/destiny-2-the-final-shape/cover-180-cccf3a.jpg",
+    "discountPercentage": 66,
+    "featured": false
+  },
+  {
+    "id": 65,
     "title": "Into the Breach",
     "platform": "PC",
     "price": 5.24,
@@ -768,7 +780,7 @@
     "featured": false
   },
   {
-    "id": 65,
+    "id": 66,
     "title": "NORCO",
     "platform": "PC",
     "price": 5.24,
@@ -780,7 +792,7 @@
     "featured": false
   },
   {
-    "id": 66,
+    "id": 67,
     "title": "Owlboy",
     "platform": "PC",
     "price": 6.99,
@@ -792,7 +804,7 @@
     "featured": false
   },
   {
-    "id": 67,
+    "id": 68,
     "title": "Dragons Dogma 2",
     "platform": "PC",
     "price": 24.99,
@@ -804,7 +816,7 @@
     "featured": false
   },
   {
-    "id": 68,
+    "id": 69,
     "title": "Return to Castle Wolfenstein",
     "platform": "PC",
     "price": 1.99,
@@ -816,7 +828,7 @@
     "featured": false
   },
   {
-    "id": 69,
+    "id": 70,
     "title": "QUAKE",
     "platform": "PC",
     "price": 3.99,
@@ -828,7 +840,7 @@
     "featured": false
   },
   {
-    "id": 70,
+    "id": 71,
     "title": "Brothers in Arms: Road to Hill 30",
     "platform": "PC",
     "price": 3.99,
@@ -840,7 +852,7 @@
     "featured": false
   },
   {
-    "id": 71,
+    "id": 72,
     "title": "DOOM 3",
     "platform": "PC",
     "price": 3.99,
@@ -852,7 +864,7 @@
     "featured": false
   },
   {
-    "id": 72,
+    "id": 73,
     "title": "Bzzzt",
     "platform": "PC",
     "price": 4.79,
@@ -864,7 +876,7 @@
     "featured": false
   },
   {
-    "id": 73,
+    "id": 74,
     "title": "Return to Monkey Island",
     "platform": "PC",
     "price": 9.99,
@@ -872,18 +884,6 @@
     "store": "GOG",
     "url": "https://www.cheapshark.com/redirect?dealID=VNqRBBR1g%2B3NBIF7VF%2BZIECD5dkp6oedGYF3HbhCDGQ%3D",
     "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2060130/capsule_sm_120.jpg?t=1711536318",
-    "discountPercentage": 60,
-    "featured": false
-  },
-  {
-    "id": 74,
-    "title": "Destiny 2: The Final Shape",
-    "platform": "PC",
-    "price": 11.99,
-    "oldPrice": 29.99,
-    "store": "Epic Games Store",
-    "url": "https://www.cheapshark.com/redirect?dealID=KbnBFxdKXWYbNjWhGTa9j5Pn7e4glbvnY99hz%2BL721c%3D",
-    "imageUrl": "https://sttc.gamersgate.com/images/product/destiny-2-the-final-shape/cover-180-cccf3a.jpg",
     "discountPercentage": 60,
     "featured": false
   },
@@ -997,6 +997,18 @@
   },
   {
     "id": 84,
+    "title": "Crusader Kings III",
+    "platform": "PC",
+    "price": 22.49,
+    "oldPrice": 49.99,
+    "store": "Fanatical",
+    "url": "https://www.cheapshark.com/redirect?dealID=1Ca5JLs29IsZRYQk3%2BziehsWbf11kjUK0CGAoLTtGfU%3D",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1158310/b213178a7dcb8e99b76886025cf1d7aff061338a/capsule_sm_120_alt_assets_10.jpg?t=1757056628",
+    "discountPercentage": 55,
+    "featured": false
+  },
+  {
+    "id": 85,
     "title": "Commandos 2: Men of Courage",
     "platform": "PC",
     "price": 2.49,
@@ -1008,7 +1020,7 @@
     "featured": false
   },
   {
-    "id": 85,
+    "id": 86,
     "title": "Fallout",
     "platform": "PC",
     "price": 4.99,
@@ -1020,7 +1032,7 @@
     "featured": false
   },
   {
-    "id": 86,
+    "id": 87,
     "title": "Fallout 2",
     "platform": "PC",
     "price": 4.99,
@@ -1032,7 +1044,7 @@
     "featured": false
   },
   {
-    "id": 87,
+    "id": 88,
     "title": "World of Goo",
     "platform": "PC",
     "price": 7.49,
@@ -1044,7 +1056,7 @@
     "featured": false
   },
   {
-    "id": 88,
+    "id": 89,
     "title": "Shogun Showdown",
     "platform": "PC",
     "price": 7.49,
@@ -1056,7 +1068,7 @@
     "featured": false
   },
   {
-    "id": 89,
+    "id": 90,
     "title": "KILL KNIGHT",
     "platform": "PC",
     "price": 7.49,
@@ -1068,7 +1080,7 @@
     "featured": false
   },
   {
-    "id": 90,
+    "id": 91,
     "title": "Opus Magnum",
     "platform": "PC",
     "price": 9.99,
@@ -1080,7 +1092,7 @@
     "featured": false
   },
   {
-    "id": 91,
+    "id": 92,
     "title": "I Was a Teenage Exocolonist",
     "platform": "PC",
     "price": 12.49,
@@ -1092,7 +1104,7 @@
     "featured": false
   },
   {
-    "id": 92,
+    "id": 93,
     "title": "Dead Cells",
     "platform": "PC",
     "price": 12.49,
@@ -1104,7 +1116,7 @@
     "featured": false
   },
   {
-    "id": 93,
+    "id": 94,
     "title": "Rogue Legacy 2",
     "platform": "PC",
     "price": 12.49,
@@ -1116,7 +1128,7 @@
     "featured": false
   },
   {
-    "id": 94,
+    "id": 95,
     "title": "Against the Storm",
     "platform": "PC",
     "price": 14.99,
@@ -1128,7 +1140,7 @@
     "featured": false
   },
   {
-    "id": 95,
+    "id": 96,
     "title": "The Talos Principle 2",
     "platform": "PC",
     "price": 14.99,
@@ -1136,18 +1148,6 @@
     "store": "Humble Store",
     "url": "https://www.cheapshark.com/redirect?dealID=YIDo46RqJF1P3rEvDJ9%2B5n0Rl7exFc9vGiYzdCPLYzw%3D",
     "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/835960/capsule_sm_120.jpg?t=1744286741",
-    "discountPercentage": 50,
-    "featured": false
-  },
-  {
-    "id": 96,
-    "title": "Crusader Kings III",
-    "platform": "PC",
-    "price": 24.99,
-    "oldPrice": 49.99,
-    "store": "Steam",
-    "url": "https://www.cheapshark.com/redirect?dealID=halY5aZiQwkq4PkT2FRWJU5rcgMU0rGTz%2B9%2FcwVEGLU%3D",
-    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1158310/capsule_sm_120.jpg?t=1757056628",
     "discountPercentage": 50,
     "featured": false
   },
@@ -1491,10 +1491,10 @@
     "id": 125,
     "title": "Blue Prince",
     "platform": "PC",
-    "price": 21.41,
+    "price": 21.39,
     "oldPrice": 29.99,
-    "store": "GreenManGaming",
-    "url": "https://www.cheapshark.com/redirect?dealID=W2%2BlpUZfRYiLbdr94pQr%2BicsOo4nrkXhS0r5v1Pe3oc%3D",
+    "store": "GameBillet",
+    "url": "https://www.cheapshark.com/redirect?dealID=wvZbPko93MNvsrkTWB259Bvv8mnNh9U7XVE%2BbGSRRMI%3D",
     "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1569580/capsule_sm_120.jpg?t=1751379489",
     "discountPercentage": 29,
     "featured": false
@@ -1513,6 +1513,18 @@
   },
   {
     "id": 127,
+    "title": "Crusader Kings III: Roads to Power",
+    "platform": "PC",
+    "price": 21.59,
+    "oldPrice": 29.99,
+    "store": "GreenManGaming",
+    "url": "https://www.cheapshark.com/redirect?dealID=jiVAjbSgURHXfDZcNPtXxZgZVt9e0Q3Y49B0wqutUy8%3D",
+    "imageUrl": "https://sttc.gamersgate.com/images/product/crusader-kings-iii-roads-to-power/cover-180-6c283e.jpg",
+    "discountPercentage": 28,
+    "featured": false
+  },
+  {
+    "id": 128,
     "title": "DUSK",
     "platform": "PC",
     "price": 14.69,
@@ -1524,7 +1536,7 @@
     "featured": false
   },
   {
-    "id": 128,
+    "id": 129,
     "title": "Halls of Torment",
     "platform": "PC",
     "price": 4.99,
@@ -1536,7 +1548,7 @@
     "featured": false
   },
   {
-    "id": 129,
+    "id": 130,
     "title": "ELDEN RING",
     "platform": "PC",
     "price": 44.95,
@@ -1548,7 +1560,7 @@
     "featured": false
   },
   {
-    "id": 130,
+    "id": 131,
     "title": "Teenage Mutant Ninja Turtles: Shredders Revenge - Dimension Shellshock",
     "platform": "PC",
     "price": 5.99,
@@ -1560,7 +1572,7 @@
     "featured": false
   },
   {
-    "id": 131,
+    "id": 132,
     "title": "Borderlands 2: Tiny Tina's Assault on Dragon Keep",
     "platform": "PC",
     "price": 7.49,
@@ -1572,7 +1584,7 @@
     "featured": false
   },
   {
-    "id": 132,
+    "id": 133,
     "title": "MULLET MADJACK",
     "platform": "PC",
     "price": 14.99,
@@ -1584,7 +1596,7 @@
     "featured": false
   },
   {
-    "id": 133,
+    "id": 134,
     "title": "ANIMAL WELL",
     "platform": "PC",
     "price": 18.74,
@@ -1596,7 +1608,7 @@
     "featured": false
   },
   {
-    "id": 134,
+    "id": 135,
     "title": "The Talos Principle: Reawakened",
     "platform": "PC",
     "price": 29.99,
@@ -1608,7 +1620,7 @@
     "featured": false
   },
   {
-    "id": 135,
+    "id": 136,
     "title": "Pillars of Eternity II: Deadfire",
     "platform": "PC",
     "price": 29.99,
@@ -1620,7 +1632,7 @@
     "featured": false
   },
   {
-    "id": 136,
+    "id": 137,
     "title": "Metal Gear Solid V: The Phantom Pain",
     "platform": "PC",
     "price": 15.32,
@@ -1632,7 +1644,7 @@
     "featured": false
   },
   {
-    "id": 137,
+    "id": 138,
     "title": "What Remains of Edith Finch",
     "platform": "PC",
     "price": 15.32,
@@ -1644,7 +1656,7 @@
     "featured": false
   },
   {
-    "id": 138,
+    "id": 139,
     "title": "Tadpole Treble",
     "platform": "PC",
     "price": 3.89,
@@ -1656,7 +1668,7 @@
     "featured": false
   },
   {
-    "id": 139,
+    "id": 140,
     "title": "Resident Evil 4 - Separate Ways",
     "platform": "PC",
     "price": 7.8,
@@ -1668,7 +1680,7 @@
     "featured": false
   },
   {
-    "id": 140,
+    "id": 141,
     "title": "System Shock 2",
     "platform": "PC",
     "price": 7.89,
@@ -1680,7 +1692,7 @@
     "featured": false
   },
   {
-    "id": 141,
+    "id": 142,
     "title": "Grapple Dogs: Cosmic Canines",
     "platform": "PC",
     "price": 14.28,
@@ -1692,7 +1704,7 @@
     "featured": false
   },
   {
-    "id": 142,
+    "id": 143,
     "title": "Rez Infinite",
     "platform": "PC",
     "price": 19.88,
@@ -1704,7 +1716,7 @@
     "featured": false
   },
   {
-    "id": 143,
+    "id": 144,
     "title": "Clair Obscur: Expedition 33",
     "platform": "PC",
     "price": 39.78,
@@ -1716,7 +1728,7 @@
     "featured": false
   },
   {
-    "id": 144,
+    "id": 145,
     "title": "The Curse of Monkey Island",
     "platform": "PC",
     "price": 5.57,
@@ -1728,7 +1740,7 @@
     "featured": false
   },
   {
-    "id": 145,
+    "id": 146,
     "title": "Mortal Kombat 11 Ultimate",
     "platform": "PC",
     "price": 47.87,
@@ -1740,7 +1752,7 @@
     "featured": false
   },
   {
-    "id": 146,
+    "id": 147,
     "title": "Abiotic Factor",
     "platform": "PC",
     "price": 27.95,
@@ -1752,7 +1764,7 @@
     "featured": false
   },
   {
-    "id": 147,
+    "id": 148,
     "title": "Sacrifice",
     "platform": "PC",
     "price": 7.99,
@@ -1764,7 +1776,7 @@
     "featured": false
   },
   {
-    "id": 148,
+    "id": 149,
     "title": "Shogo: Mobile Armor Division",
     "platform": "PC",
     "price": 7.99,
@@ -1776,7 +1788,7 @@
     "featured": false
   },
   {
-    "id": 149,
+    "id": 150,
     "title": "The Crimson Diamond",
     "platform": "PC",
     "price": 11.99,
@@ -1788,7 +1800,7 @@
     "featured": false
   },
   {
-    "id": 150,
+    "id": 151,
     "title": "RimWorld",
     "platform": "PC",
     "price": 27.99,
@@ -1800,7 +1812,7 @@
     "featured": false
   },
   {
-    "id": 151,
+    "id": 152,
     "title": "DOOM Eternal",
     "platform": "PC",
     "price": 32.78,
@@ -1812,7 +1824,7 @@
     "featured": false
   },
   {
-    "id": 152,
+    "id": 153,
     "title": "Star Wars Jedi Knight: Dark Forces II",
     "platform": "PC",
     "price": 4.95,
@@ -1824,7 +1836,7 @@
     "featured": false
   },
   {
-    "id": 153,
+    "id": 154,
     "title": "Star Wars Jedi Knight II: Jedi Outcast",
     "platform": "PC",
     "price": 8.27,
@@ -1836,7 +1848,7 @@
     "featured": false
   },
   {
-    "id": 154,
+    "id": 155,
     "title": "Monkey Island 2 Special Edition: LeChucks Revenge",
     "platform": "PC",
     "price": 8.27,
@@ -1848,7 +1860,7 @@
     "featured": false
   },
   {
-    "id": 155,
+    "id": 156,
     "title": "Balatro",
     "platform": "PC",
     "price": 12.42,
@@ -1860,7 +1872,7 @@
     "featured": false
   },
   {
-    "id": 156,
+    "id": 157,
     "title": "ANTONBLAST",
     "platform": "PC",
     "price": 16.57,
@@ -1872,7 +1884,7 @@
     "featured": false
   },
   {
-    "id": 157,
+    "id": 158,
     "title": "Neon White",
     "platform": "PC",
     "price": 20.72,
@@ -1884,7 +1896,7 @@
     "featured": false
   },
   {
-    "id": 158,
+    "id": 159,
     "title": "COCOON",
     "platform": "PC",
     "price": 20.72,
@@ -1896,7 +1908,7 @@
     "featured": false
   },
   {
-    "id": 159,
+    "id": 160,
     "title": "Subnautica",
     "platform": "PC",
     "price": 24.87,
@@ -1908,7 +1920,7 @@
     "featured": false
   },
   {
-    "id": 160,
+    "id": 161,
     "title": "DEATHLOOP",
     "platform": "PC",
     "price": 49.77,
@@ -1920,7 +1932,7 @@
     "featured": false
   },
   {
-    "id": 161,
+    "id": 162,
     "title": "Hi-Fi RUSH",
     "platform": "PC",
     "price": 24.98,
@@ -1932,7 +1944,7 @@
     "featured": false
   },
   {
-    "id": 162,
+    "id": 163,
     "title": "XCOM: Enemy Unknown",
     "platform": "PC",
     "price": 24.99,
@@ -1944,7 +1956,7 @@
     "featured": false
   },
   {
-    "id": 163,
+    "id": 164,
     "title": "Dishonored",
     "platform": "PC",
     "price": 8.39,
@@ -1956,7 +1968,7 @@
     "featured": false
   },
   {
-    "id": 164,
+    "id": 165,
     "title": "Max Payne",
     "platform": "PC",
     "price": 8.39,
@@ -1968,7 +1980,7 @@
     "featured": false
   },
   {
-    "id": 165,
+    "id": 166,
     "title": "Indiana Jones and the Great Circle",
     "platform": "PC",
     "price": 58.79,
@@ -1980,7 +1992,7 @@
     "featured": false
   },
   {
-    "id": 166,
+    "id": 167,
     "title": "Crusader Kings II: The Old Gods",
     "platform": "PC",
     "price": 12.71,
@@ -1992,7 +2004,7 @@
     "featured": false
   },
   {
-    "id": 167,
+    "id": 168,
     "title": "Monster Train 2",
     "platform": "PC",
     "price": 21.23,
@@ -2004,7 +2016,7 @@
     "featured": false
   },
   {
-    "id": 168,
+    "id": 169,
     "title": "The Last of Us Part II Remastered",
     "platform": "PC",
     "price": 42.47,
@@ -2016,7 +2028,7 @@
     "featured": false
   },
   {
-    "id": 169,
+    "id": 170,
     "title": "Caves of Qud",
     "platform": "PC",
     "price": 25.49,
@@ -2028,7 +2040,7 @@
     "featured": false
   },
   {
-    "id": 170,
+    "id": 171,
     "title": "Bionic Bay",
     "platform": "PC",
     "price": 17.39,
@@ -2040,7 +2052,7 @@
     "featured": false
   },
   {
-    "id": 171,
+    "id": 172,
     "title": "Shin Megami Tensei V: Vengeance",
     "platform": "PC",
     "price": 52.19,
@@ -2052,7 +2064,7 @@
     "featured": false
   },
   {
-    "id": 172,
+    "id": 173,
     "title": "Persona 3 Reload",
     "platform": "PC",
     "price": 60.89,
@@ -2064,7 +2076,7 @@
     "featured": false
   },
   {
-    "id": 173,
+    "id": 174,
     "title": "Like a Dragon Infinite Wealth",
     "platform": "PC",
     "price": 60.89,
@@ -2076,7 +2088,7 @@
     "featured": false
   },
   {
-    "id": 174,
+    "id": 175,
     "title": "Fallout 3",
     "platform": "PC",
     "price": 8.7,
@@ -2088,7 +2100,7 @@
     "featured": false
   },
   {
-    "id": 175,
+    "id": 176,
     "title": "ELDEN RING Shadow of the Erdtree",
     "platform": "PC",
     "price": 34.95,
@@ -2100,7 +2112,7 @@
     "featured": false
   },
   {
-    "id": 176,
+    "id": 177,
     "title": "Dark Souls III",
     "platform": "PC",
     "price": 52.69,
@@ -2112,7 +2124,7 @@
     "featured": false
   },
   {
-    "id": 177,
+    "id": 178,
     "title": "Bayonetta",
     "platform": "PC",
     "price": 17.59,
@@ -2124,7 +2136,7 @@
     "featured": false
   },
   {
-    "id": 178,
+    "id": 179,
     "title": "Persona 4 Golden",
     "platform": "PC",
     "price": 17.75,
@@ -2136,7 +2148,7 @@
     "featured": false
   },
   {
-    "id": 179,
+    "id": 180,
     "title": "Total War: SHOGUN 2",
     "platform": "PC",
     "price": 26.65,
@@ -2148,7 +2160,7 @@
     "featured": false
   },
   {
-    "id": 180,
+    "id": 181,
     "title": "Granblue Fantasy Versus: Rising",
     "platform": "PC",
     "price": 44.89,
@@ -2160,7 +2172,7 @@
     "featured": false
   },
   {
-    "id": 181,
+    "id": 182,
     "title": "Total War: WARHAMMER II",
     "platform": "PC",
     "price": 53.88,
@@ -2172,7 +2184,7 @@
     "featured": false
   },
   {
-    "id": 182,
+    "id": 183,
     "title": "Guacamelee! Gold Edition",
     "platform": "PC",
     "price": 13.49,
@@ -2184,7 +2196,7 @@
     "featured": false
   },
   {
-    "id": 183,
+    "id": 184,
     "title": "Assassins Creed Brotherhood",
     "platform": "PC",
     "price": 17.99,
@@ -2196,7 +2208,7 @@
     "featured": false
   },
   {
-    "id": 184,
+    "id": 185,
     "title": "Far Cry 3",
     "platform": "PC",
     "price": 17.99,
@@ -2208,7 +2220,7 @@
     "featured": false
   },
   {
-    "id": 185,
+    "id": 186,
     "title": "Six Ages: Ride Like the Wind",
     "platform": "PC",
     "price": 17.99,
@@ -2220,7 +2232,7 @@
     "featured": false
   },
   {
-    "id": 186,
+    "id": 187,
     "title": "Rayman Legends",
     "platform": "PC",
     "price": 26.99,
@@ -2229,18 +2241,6 @@
     "url": "https://www.cheapshark.com/redirect?dealID=Hjhcw8LIAuDE1NlNR2TDPjAXX6fvKybFmRfJG7zPVv8%3D",
     "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/242550/capsule_sm_120.jpg?t=1744316870",
     "discountPercentage": 10,
-    "featured": false
-  },
-  {
-    "id": 187,
-    "title": "Crusader Kings III: Roads to Power",
-    "platform": "PC",
-    "price": 28.49,
-    "oldPrice": 29.99,
-    "store": "Gamesplanet",
-    "url": "https://www.cheapshark.com/redirect?dealID=%2FmTSfJbOpDPihLeO2uaPxwGOE%2FdrY8mQbz0EOyB8eJo%3D",
-    "imageUrl": "https://sttc.gamersgate.com/images/product/crusader-kings-iii-roads-to-power/cover-180-6c283e.jpg",
-    "discountPercentage": 5,
     "featured": false
   }
 ]
