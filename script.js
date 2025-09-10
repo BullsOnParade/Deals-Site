@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Content Loaded - starting app');
-  
   // Only run on index.html
   if (!document.querySelector('.featured-deals')) {
-    console.log('Not on index page, skipping initialization');
     return;
   }
   
@@ -30,24 +27,17 @@ const popularItemsPerPage = 10;
 
 // --- INITIALIZATION ---
 function initializeApp() {
-  console.log('Starting app initialization...');
-  
   // Show loading states immediately
   showLoadingStates();
   
   // Fallback timeout to hide loading states if something goes wrong
   setTimeout(() => {
-    console.log('Fallback timeout reached - hiding loading states');
     hideLoadingStates();
   }, 15000); // 15 second fallback
-  
-  // Test if we can access the deals.json file
-  console.log('Testing deals.json access...');
   
   // Add timeout to prevent infinite loading
   const controller = new AbortController();
   const timeoutId = setTimeout(() => {
-    console.log('Fetch timeout reached');
     controller.abort();
   }, 10000); // 10 second timeout
   
@@ -57,54 +47,44 @@ function initializeApp() {
   })
     .then(response => {
       clearTimeout(timeoutId);
-      console.log('Fetch response received:', response.status);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
     .then(deals => {
-      console.log(`Loaded ${deals.length} deals from deals.json`);
-      
       try {
         // Set the main data source first
         allDealsData = deals;
         filteredDealsData = deals;
-        console.log('Data set successfully');
         
         // Populate the top featured cards
         populateFeaturedDeals(deals);
-        console.log('Featured deals populated');
         
         // Populate the top AAA games table
         populateTopAAAGames(deals);
-        console.log('Top AAA games populated');
         
         // Set up interactive elements one by one with error handling
         try {
           setupSorting();
-          console.log('Sorting setup complete');
         } catch (e) {
           console.error('Error in setupSorting:', e);
         }
         
         try {
           setupPagination();
-          console.log('Pagination setup complete');
         } catch (e) {
           console.error('Error in setupPagination:', e);
         }
         
         try {
           setupCarouselControls();
-          console.log('Carousel controls setup complete');
         } catch (e) {
           console.error('Error in setupCarouselControls:', e);
         }
         
         try {
           setupSearch();
-          console.log('Search setup complete');
         } catch (e) {
           console.error('Error in setupSearch:', e);
         }
@@ -113,15 +93,12 @@ function initializeApp() {
         try {
           sortAllDealsData();
           displayPage(1);
-          console.log('Initial display complete');
         } catch (e) {
           console.error('Error in initial display:', e);
         }
         
         // Hide loading states
         hideLoadingStates();
-        
-        console.log('App initialization complete');
       } catch (setupError) {
         console.error('Error during setup:', setupError);
         hideLoadingStates(); // Make sure to hide loading states even on error
@@ -180,7 +157,6 @@ function hideLoadingStates() {
     }
   }
   
-  console.log('Loading states hidden');
 }
 
 function showTableLoading() {
@@ -427,11 +403,9 @@ function populateTopAAAGames(deals) {
   const popularDeals = deals.filter(deal => {
     const title = deal.title.toLowerCase();
     
-    // Skip DLCs, packs, expansions, and booster packs
+    // Skip DLCs, packs, expansions, and booster packs (but allow main games with edition names)
     if (title.includes('dlc') || title.includes('pack') || title.includes('expansion') || 
         title.includes('season pass') || title.includes('bundle') || title.includes('collection') ||
-        title.includes('edition') || title.includes('ultimate') || title.includes('gold') ||
-        title.includes('premium') || title.includes('deluxe') || title.includes('complete') ||
         title.includes('booster') || title.includes('card') || title.includes('trading') ||
         title.includes('starter') || title.includes('upgrade') || title.includes('add-on') ||
         title.includes('skin') || title.includes('cosmetic') || title.includes('weapon') ||
@@ -439,18 +413,26 @@ function populateTopAAAGames(deals) {
       return false;
     }
     
+    // Skip standalone DLC/expansion titles (but allow main games with edition names)
+    if (title.includes('dlc:') || title.includes('expansion:') || title.includes('pack:') ||
+        title.match(/\b(dlc|expansion|pack)\s+(only|standalone)\b/)) {
+      return false;
+    }
+    
     return popularGames.some(popularGame => {
       const gameName = popularGame.toLowerCase();
-      // More precise matching - exact match or starts with the game name followed by space/colon/dash
+      // More flexible matching - exact match or starts with the game name followed by space/colon/dash
+      // Also allow games that contain the popular game name (for editions, etc.)
       return title === gameName || 
              title.startsWith(gameName + ' ') || 
              title.startsWith(gameName + ':') || 
-             title.startsWith(gameName + ' -');
+             title.startsWith(gameName + ' -') ||
+             title.includes(' ' + gameName + ' ') ||
+             title.includes(' ' + gameName + ':') ||
+             title.includes(' ' + gameName + ' -');
     });
   });
   
-  // Debug: Log found popular games
-  console.log('Found popular games:', popularDeals.map(deal => deal.title));
   
   // Sort alphabetically (A-Z) - we'll paginate this
   const sortedPopularDeals = popularDeals.sort((a, b) => {
@@ -472,7 +454,6 @@ function displayPopularGamesPage(page) {
   
   if (popularGamesData.length === 0) {
     // Fallback: Show top deals by discount if no popular games found
-    console.log('No popular games found, showing top deals by discount');
     const topDeals = allDealsData
       .sort((a, b) => {
         const discountA = Math.round(((a.oldPrice - a.price) / a.oldPrice) * 100);

@@ -811,18 +811,6 @@ body {
 }
 
 /* Skeleton Loader for Featured Deals */
-.skeleton-deals-container {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  padding-bottom: 10px;
-}
-
-.skeleton-deals-container::-webkit-scrollbar {
-  display: none;
-}
 
 .skeleton-deal-card {
   background: var(--background-light);
@@ -888,23 +876,6 @@ body {
 }
 
 /* Skeleton Loader for Table */
-.skeleton-table-container {
-  width: 75%;
-  margin: 0 auto;
-  background: var(--background-light);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.skeleton-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.skeleton-table-header {
-  background: var(--primary-color);
-  height: 50px;
-}
 
 .skeleton-table-row {
   border-bottom: 1px solid var(--text-muted);

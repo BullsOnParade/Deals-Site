@@ -103,7 +103,6 @@ def filter_and_deduplicate_deals(deals: List[Dict[str, Any]]) -> List[Dict[str, 
     """Filters deals based on CONFIG criteria and finds the cheapest deal per game title."""
     cheapest_deals = {}
     rejected_count = 0
-    palworld_found = False
 
     for deal in deals:
         try:
@@ -111,11 +110,6 @@ def filter_and_deduplicate_deals(deals: List[Dict[str, Any]]) -> List[Dict[str, 
             normal_price = float(deal['normalPrice'])
             title = deal['title']
 
-            # Check if this is Palworld for debugging
-            if 'palworld' in title.lower():
-                palworld_found = True
-                print(f"DEBUG: Found Palworld deal - Title: {title}, Sale: ${sale_price}, Normal: ${normal_price}")
-                print(f"DEBUG: Full deal data: {deal}")
 
             # Primary filtering conditions
             is_on_sale = 0.00 < sale_price < normal_price
@@ -128,19 +122,10 @@ def filter_and_deduplicate_deals(deals: List[Dict[str, Any]]) -> List[Dict[str, 
                     cheapest_deals[title] = deal
             else:
                 rejected_count += 1
-                if 'palworld' in title.lower():
-                    print(f"DEBUG: Palworld rejected - is_on_sale: {is_on_sale}, meets_discount: {meets_discount_reqs}, within_price: {is_within_price_range}")
         except (ValueError, TypeError, KeyError) as e:
             rejected_count += 1
-            if 'palworld' in deal.get('title', '').lower():
-                print(f"DEBUG: Palworld error - {e}, deal: {deal}")
             continue
     
-    if not palworld_found:
-        print("DEBUG: Palworld not found in any deals")
-    else:
-        print("DEBUG: Palworld was found but may have been filtered out")
-            
     print(f"Rejected {rejected_count} deals during initial filtering and deduplication.")
     return list(cheapest_deals.values())
 
