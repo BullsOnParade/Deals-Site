@@ -49,6 +49,19 @@ body {
     font-weight: 500;
 }
 
+.header__inner a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__title a {
+  color: var(--primary-color);
+}
+
+.header__tagline a {
+  color: var(--text-light);
+}
+
 .header__menu {
     display: flex;
     gap: 16px;
